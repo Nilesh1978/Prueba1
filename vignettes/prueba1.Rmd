@@ -1,0 +1,100 @@
+---
+title: "FARS Functions Package Vignette"
+author: "Alfredo Alvarado"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+  
+vignette: >
+  %\VignetteIndexEntry{FARS TEST Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This is the Vignette created for the package "Fars Functions"" as part of the coursera "Building an R Package" course.
+
+The functions use data from the [US National Highway Traffic Safety Administration's Fatality Analysis Reporting System](https://www.nhtsa.gov/), which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
+
+## Functions that are part of the package
+
+1. fars_map_state
+1. fars_read
+1. fars_read_years
+1. fars_summarize_years
+1. make_filename
+
+## 1-fars_map_state
+**Description:**
+This function takes a year and state numbers and create a graph with the Highway Traffic
+Fatality located by longitud and latitude.
+The function will provide the warnings and messages included in the fars_read and make_file.
+
+**Example on how it should be used:**
+```{r, eval=FALSE}
+setwd("~/Desktop/COURSERA/R Software Develpment specialization/Course3/1 test/data1/data")
+library(Prueba1)
+fars_map_state(c(20,33,48), c(2013,2014,2015))
+
+```
+
+## 2-fars_read
+**Description:**
+This function takes as "input" the name of the file and return a
+dataframe using the readr::read_csv function.
+
+**Example on how it should be used: **
+
+```{r, eval=FALSE}
+setwd("~/Desktop/COURSERA/R Software Develpment specialization/Course3/1 test/data1/data")
+library(Prueba1)
+fars_read("accident_2013d.csv.bz2")
+
+```
+
+## 3-fars_read_years
+**Description:**
+This function takes a vector of years as input, and them select the year and month information contained in
+the files (like "accident_YYYYd.csv.bz2") saved in the working directory.
+The files will be the ones where the name includes one of the years provided, after appliying
+the "make_filename" function.
+
+**Example on how it should be used: **
+
+```{r, eval=FALSE}
+
+setwd("~/Desktop/COURSERA/R Software Develpment specialization/Course3/1 test/data1/data")
+library(Prueba1)
+fars_read_years(c(2013,2014,2015))
+
+```
+
+## 4-fars_summarize_years
+
+**Description:**
+This function takes a vector of years, select and summarize the observations by year and month contained
+in the files "accident_YYYYd.csv.bz2". The function will provide the warnings and messages included in the
+fars_read and fars_read_years functions.
+
+**Example on how it should be used:**
+```{r, eval=FALSE}
+
+setwd("~/Desktop/COURSERA/R Software Develpment specialization/Course3/1 test/data1/data")
+library(Prueba1)
+fars_summarize_years (c(2013,2014,2015))
+
+```
+
+## 5-make_filename
+
+**Description:**
+This function create a file name based on a given "year" that is part of the file name.
+**Example on how it should be used:**
+```{r, eval=FALSE}
+
+setwd("~/Desktop/COURSERA/R Software Develpment specialization/Course3/1 test/data1/data")
+library(Prueba1)
+example1<-make_filename(2013)
+example1
+
+```
+
+
